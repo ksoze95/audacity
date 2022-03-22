@@ -6,6 +6,8 @@ set(QAUDACITY_BINDIR "${CMAKE_BINARY_DIR}/bin/qt")
 
 set(SOURCES
    main.cpp
+   NewAudacity.cpp
+   NewAudacity.h
 )
 
 set(RESOURCES
@@ -158,7 +160,9 @@ else()
    set_target_property_all( ${QAUDACITY} RUNTIME_OUTPUT_DIRECTORY "${QAUDACITY_BINDIR}/$<CONFIG>/bin" )
 endif()
 
-list( APPEND LIBRARIES Qt5::Core Qt5::Gui Qt5::Widgets Qt5::Quick )
+list( APPEND LIBRARIES Qt5::Core Qt5::Gui Qt5::Widgets Qt5::Quick
+      wxwidgets::wxwidgets
+)
 
 set( QTSOURCES )
 

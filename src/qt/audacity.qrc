@@ -1,5 +1,8 @@
 <RCC>
-   <qresource prefix="/">
-       <file>qml/main.qml</file>
-   </qresource>
+    <qresource prefix="/">
+        <file>qml/main.qml</file>
+        <file>qml/CustomButton.qml</file>
+        <file>images/Play.png</file>
+        <file>images/Stop.png</file>
+    </qresource>
 </RCC>

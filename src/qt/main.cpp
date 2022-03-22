@@ -5,6 +5,7 @@
 #include <QtGui/QSurfaceFormat>
 #include <QtDebug>
 #include <QFileInfo>
+#include "NewAudacity.h"
 
 int main(int argc, char *argv[])
 {
@@ -16,8 +17,11 @@ int main(int argc, char *argv[])
    qDebug() << qtLibDir;
 #endif
 
-   QGuiApplication app(argc, argv);
+   QApplication app(argc, argv);
    QQmlApplicationEngine engine;
+
+   NewAudacity new_audacity;
+   engine.rootContext()->setContextProperty("new_audacity", &new_audacity);
 
 #if defined(Q_OS_WIN)
    engine.addImportPath(QGuiApplication::applicationDirPath() + "/qml");

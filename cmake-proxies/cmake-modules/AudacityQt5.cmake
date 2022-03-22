@@ -9,6 +9,8 @@ if( ${_OPT}conan_enabled )
 endif()
 
 set(_QT5_INTERNAL_SCOPE Yes)
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTOUIC ON)
 
 get_target_property(rcc_path Qt5::rcc IMPORTED_LOCATION)
 get_target_property(moc_path Qt5::moc IMPORTED_LOCATION)
@@ -46,8 +48,8 @@ function( audacity_qt_add_resource outfiles resource )
 
    set_source_files_properties(${infile} PROPERTIES SKIP_AUTORCC ON)
    set_source_files_properties(${outfile} PROPERTIES SKIP_AUTORCC ON)
-   set_source_files_properties(${outfile} PROPERTIES SKIP_AUTOMOC ON)
-   set_source_files_properties(${outfile} PROPERTIES SKIP_AUTOUIC ON)
+   set_source_files_properties(${outfile} PROPERTIES SKIP_AUTOMOC OFF)
+   set_source_files_properties(${outfile} PROPERTIES SKIP_AUTOUIC OFF)
 
    list(APPEND ${outfiles} ${outfile})
    set(${outfiles} ${${outfiles}} PARENT_SCOPE)
@@ -72,9 +74,9 @@ function( audacity_qt_wrap_ui outfiles resource )
    )
 
    set_source_files_properties(${outfile} PROPERTIES SKIP_AUTORCC ON)
-   set_source_files_properties(${outfile} PROPERTIES SKIP_AUTOMOC ON)
-   set_source_files_properties(${outfile} PROPERTIES SKIP_AUTOUIC ON)
-   set_source_files_properties(${infile} PROPERTIES SKIP_AUTOUIC ON)
+   set_source_files_properties(${outfile} PROPERTIES SKIP_AUTOMOC OFF)
+   set_source_files_properties(${outfile} PROPERTIES SKIP_AUTOUIC OFF)
+   set_source_files_properties(${infile} PROPERTIES SKIP_AUTOUIC OFF)
 
    list(APPEND ${outfiles} ${outfile})
    set(${outfiles} ${${outfiles}} PARENT_SCOPE)
@@ -104,9 +106,9 @@ function(audacity_qt_create_moc_command infile outfile moc_flags)
                      ${_moc_working_dir}
                      VERBATIM)
 
-                     set_source_files_properties(${infile} PROPERTIES SKIP_AUTOMOC ON)
-   set_source_files_properties(${outfile} PROPERTIES SKIP_AUTOMOC ON)
-   set_source_files_properties(${outfile} PROPERTIES SKIP_AUTOUIC ON)
+                     set_source_files_properties(${infile} PROPERTIES SKIP_AUTOMOC OFF)
+   set_source_files_properties(${outfile} PROPERTIES SKIP_AUTOMOC OFF)
+   set_source_files_properties(${outfile} PROPERTIES SKIP_AUTOUIC OFF)
 endfunction()
 
 function(audacity_qt_wrap_cpp outfiles infile)
