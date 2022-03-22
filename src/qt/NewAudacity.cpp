@@ -10,6 +10,7 @@ NewAudacity::NewAudacity(QObject* parent)
 
 NewAudacity::~NewAudacity()
 {
+   player.stop();
 }
 
 void NewAudacity::Browse()
@@ -53,11 +54,12 @@ void NewAudacity::Play()
 
    wxLogDebug("Attempting to play sound file '%s", sound_file.toStdString());
 
-   wxLogError("Play functionality not yet implemented");
+   player.stop();
+   player.play(sound_file.toStdString());
 }
 
 void NewAudacity::Stop()
 {
-   wxLogError("Stop functionality not yet implemented");
+   player.stop();
 }
 

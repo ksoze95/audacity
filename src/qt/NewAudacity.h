@@ -2,6 +2,7 @@
 
 #include <QObject>
 #include <QString>
+#include "AudioPlayer.hpp"
 
 class NewAudacity : public QObject
 {
@@ -18,4 +19,5 @@ class NewAudacity : public QObject
 
    private:
       QString sound_file;
+      AudioPlayer player;
 };

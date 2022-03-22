@@ -1,0 +1,43 @@
+#pragma once
+
+#include <vector>
+#include <sndfile.h>
+#include <portaudio.h>
+#include "AudioFile.hpp"
+
+struct Playback
+{
+   AudioFile * audioFile;
+   int position;
+   bool loop;
+};
+
+enum AudioEventType
+{
+   start, stop
+};
+
+class StreamHandler
+{
+    public:
+        StreamHandler();
+        ~StreamHandler();
+
+        void processEvent(AudioEventType audioEventType,
+                          AudioFile * audioFile = nullptr,
+                          bool loop = false);
+
+        static int PortAudioCallback(const void * input,
+                                     void * output,
+                                     unsigned long frameCount,
+                                     const PaStreamCallbackTimeInfo * paTimeInfo,
+                                     PaStreamCallbackFlags statusFlags,
+                                     void * userData);
+    private:
+        const int CHANNEL_COUNT = 2;
+        const int SAMPLE_RATE = 44000;
+        const PaStreamParameters * NO_INPUT = nullptr;
+
+        PaStream * stream;
+        std::vector<Playback *> data;
+};

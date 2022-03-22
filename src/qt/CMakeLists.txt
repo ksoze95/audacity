@@ -6,6 +6,13 @@ set(QAUDACITY_BINDIR "${CMAKE_BINARY_DIR}/bin/qt")
 
 set(SOURCES
    main.cpp
+   AudioFile.hpp
+   AudioPlayer.cpp
+   AudioPlayer.hpp
+   FileHandler.cpp
+   FileHandler.hpp
+   StreamHandler.cpp
+   StreamHandler.hpp
    NewAudacity.cpp
    NewAudacity.h
 )
@@ -162,6 +169,8 @@ endif()
 
 list( APPEND LIBRARIES Qt5::Core Qt5::Gui Qt5::Widgets Qt5::Quick
       wxwidgets::wxwidgets
+      SndFile::sndfile
+      PortAudio::PortAudio
 )
 
 set( QTSOURCES )
