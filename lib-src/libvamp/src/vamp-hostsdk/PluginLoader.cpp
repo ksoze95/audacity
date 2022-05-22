@@ -48,8 +48,28 @@
 #ifdef _WIN32
 
 #include <windows.h>
+#include <ImageHlp.h>
 #include <tchar.h>
 #define PLUGIN_SUFFIX "dll"
+
+#pragma comment(lib, "ImageHlp.Lib")
+
+namespace {
+   WORD GetMachineType(PCSTR filename) {
+      auto loadedImage = ::ImageLoad(filename, nullptr);
+      if (!loadedImage) {
+         std::cerr << "Vamp::HostExt::PluginLoader: Unable to ImageLoad \""
+                   << filename << "\"" << std::endl;
+
+         return 0;
+      }
+
+      WORD machineType = loadedImage->FileHeader->FileHeader.Machine;
+      ::ImageUnload(loadedImage);
+
+      return machineType;
+   }
+}
 
 #else /* ! _WIN32 */
 
@@ -130,7 +150,11 @@ protected:
 
     string splicePath(string a, string b);
     vector<string> listFiles(string dir, string ext);
-    
+
+#ifdef _WIN32
+    WORD m_machineType;
+#endif
+
     static InstanceCleaner m_cleaner;
 };
 
@@ -189,6 +213,7 @@ PluginLoader::getPluginCategory(PluginKey key)
     return m_impl->getPluginCategory(key);
 }
 
+
 string
 PluginLoader::getLibraryPathForPlugin(PluginKey key)
 {
@@ -198,6 +223,9 @@ PluginLoader::getLibraryPathForPlugin(PluginKey key)
 PluginLoader::Impl::Impl() :
     m_allPluginsEnumerated(false)
 {
+#ifdef _WIN32
+    m_machineType = GetMachineType(_pgmptr);
+#endif
 }
 
 PluginLoader::Impl::~Impl()
@@ -262,6 +290,16 @@ PluginLoader::Impl::enumeratePlugins(PluginKey forPlugin)
 
             string fullPath = path[i];
             fullPath = splicePath(fullPath, *fi);
+
+#ifdef _WIN32
+            WORD libraryMachineType = GetMachineType(fullPath.c_str());
+
+            if (!libraryMachineType || (libraryMachineType != m_machineType)) {
+               cerr << "Vamp::HostExt::PluginLoader: Library \"" << fullPath
+                    << "\" does not match executable machine type" << endl;
+               continue;
+            }
+#endif
             void *handle = loadLibrary(fullPath);
             if (!handle) continue;
             
