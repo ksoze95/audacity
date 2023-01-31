@@ -7,6 +7,7 @@ set(SOURCES
 
 set(RESOURCES
    audacity.qrc
+   fonts/fonts.qrc
 )
 
 qt_add_resources(QT_RESOURCES
