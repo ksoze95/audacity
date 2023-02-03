@@ -18,6 +18,7 @@ qt_add_executable(${QAUDACITY} ${SOURCES} ${QT_RESOURCES} MANUAL_FINALIZATION)
 
 set(QML_SOURCES
    qml/main.qml
+   qml/StyledTextLabel.qml
 )
 
 qt_add_qml_module(
