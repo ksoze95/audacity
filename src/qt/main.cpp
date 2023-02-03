@@ -10,13 +10,6 @@ int main(int argc, char *argv[])
    QGuiApplication app(argc, argv);
    QQmlApplicationEngine engine;
 
-   int status = QFontDatabase::addApplicationFont(":/fonts/AudacityIcon.ttf");
-   if (status != 0)
-   {
-      qDebug() << "Unable add AudacityIcon.ttf application font";
-      return -1;
-   }
-
    engine.load("qrc:/qml/main.qml");
 
    if (engine.rootObjects().isEmpty())
