@@ -1,15 +1,21 @@
 /*  SPDX-License-Identifier: GPL-2.0-or-later */
 
 #include <QtCore/QDebug>
-#include <QtGui/QFontDatabase>
 #include <QtQml/QQmlApplicationEngine>
 #include <QtWidgets/QApplication>
+#include "uicomponents/ApplicationConfiguration.h"
 
 int main(int argc, char *argv[])
 {
    QGuiApplication app(argc, argv);
    QQmlApplicationEngine engine;
 
+   ApplicationConfiguration appConfig;
+   engine.addImportPath(":/uicomponents");
+
+   engine.setInitialProperties({
+      { "appConfig", QVariant::fromValue(&appConfig) }
+   });
    engine.load("qrc:/qml/main.qml");
 
    if (engine.rootObjects().isEmpty())

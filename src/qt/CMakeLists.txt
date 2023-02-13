@@ -14,12 +14,12 @@ qt_add_resources(QT_RESOURCES
    ${RESOURCES}
 )
 
+add_subdirectory(uicomponents)
+
 qt_add_executable(${QAUDACITY} ${SOURCES} ${QT_RESOURCES} MANUAL_FINALIZATION)
 
 set(QML_SOURCES
    qml/main.qml
-   qml/StyledTextLabel.qml
-   qml/StyledIconLabel.qml
 )
 
 qt_add_qml_module(
@@ -61,7 +61,7 @@ endif()
 
 target_compile_definitions( ${QAUDACITY} PRIVATE $<$<CONFIG:Debug>:QT_QML_DEBUG> )
 target_link_libraries( ${QAUDACITY} PUBLIC ${AUDACITY_LIBRARIES} )
-target_link_libraries( ${QAUDACITY} PRIVATE Qt6::Core Qt6::Gui Qt6::Quick kddockwidgets::kddockwidgets )
+target_link_libraries( ${QAUDACITY} PRIVATE Qt6::Core Qt6::Gui Qt6::Quick kddockwidgets::kddockwidgets uicomponentsplugin)
 
 qt_finalize_target(${QAUDACITY})
 

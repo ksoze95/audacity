@@ -2,11 +2,15 @@ import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
 
+import Audacity.UiComponents
+
 ApplicationWindow {
    width: 640
    height: 480
    visible: true
    title: qsTr("Audacity")
+
+   required property ApplicationConfiguration appConfig
 
    menuBar: MenuBar {
       Menu {
@@ -19,103 +23,81 @@ ApplicationWindow {
    }
 
    RowLayout {
+      id: rowLayout
       spacing: 2
 
-      FontLoader {
-         id: audacityIcon
-         source: "qrc:/fonts/AudacityIcon.ttf"
-      }
-
-      StyledIconLabel {
+      FlatButton {
          id: play
-         font.family: audacityIcon.name
-         font.pixelSize: 10
-         iconCode: 0xF446
-         color: "#0F7745"
+         icon: IconCode.SOLID_PLAY
+         iconColor: "#0F7745"
       }
 
-      StyledIconLabel {
+      FlatButton {
          id: stop
-         font.family: audacityIcon.name
-         font.pixelSize: 10
-         iconCode: 0xF447
+         icon: IconCode.SOLID_STOP
       }
 
-      StyledIconLabel {
+      FlatButton {
          id: rewind
-         font.family: audacityIcon.name
-         font.pixelSize: 10
-         iconCode: 0xF448
+         icon: IconCode.SOLID_REWIND
       }
 
-      StyledIconLabel {
+      FlatButton {
          id: fastFoward
-         font.family: audacityIcon.name
-         font.pixelSize: 10
-         iconCode: 0xF449
+         icon: IconCode.SOLID_FAST_FORWARD
       }
 
-      StyledIconLabel {
+      FlatButton {
          id: record
-         font.family: audacityIcon.name
-         font.pixelSize: 12
-         iconCode: 0xF44A
-         color: "#C54444"
+         icon: IconCode.SOLID_RECORD
+         iconColor: "#C54444"
       }
 
-      StyledIconLabel {
+      FlatButton {
          id: loop
-         font.family: audacityIcon.name
-         font.pixelSize: 14
-         iconCode: 0xEF1F
+         icon: IconCode.LOOP
       }
 
-      StyledIconLabel {
+      FlatButton {
          id: automation
-         font.family: audacityIcon.name
-         iconCode: 0xF3CB
+         icon: IconCode.AUTOMATION
       }
 
-      StyledIconLabel {
+      FlatButton {
          id: zoomIn
-         font.family: audacityIcon.name
-         iconCode: 0xEF18
+         icon: IconCode.ZOOM_IN
       }
 
-      StyledIconLabel {
+      FlatButton {
          id: zoomOut
-         font.family: audacityIcon.name
-         iconCode: 0xEF16
+         icon: IconCode.ZOOM_OUT
       }
 
-      StyledIconLabel {
+      FlatButton {
          id: zoomFitSelection
-         font.family: audacityIcon.name
-         iconCode: 0xF439
+         icon: IconCode.ZOOM_FIT_SELECTION
       }
 
-      StyledIconLabel {
+      FlatButton {
          id: zoomFitProject
-         font.family: audacityIcon.name
-         iconCode: 0xF438
+         icon: IconCode.ZOOM_FIT_PROJECT
       }
 
-      StyledIconLabel {
+      FlatButton {
          id: zoomToggle
-         font.family: audacityIcon.name
-         iconCode: 0xF437
+         icon: IconCode.ZOOM_TOGGLE
       }
 
-      StyledIconLabel {
+      FlatButton {
          id: trim
-         font.family: audacityIcon.name
-         iconCode: 0xF43B
+         icon: IconCode.TRIM
+         enabled: false
       }
 
-      StyledIconLabel {
+      FlatButton {
          id: silence
-         font.family: audacityIcon.name
-         iconCode: 0xF43A
+         icon: IconCode.SILENCE
+         accentButton: true
       }
    }
 }
