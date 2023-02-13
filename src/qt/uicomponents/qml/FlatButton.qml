@@ -80,13 +80,12 @@ FocusScope {
       return FlatButton.TextOnly
    }
 
-   signal clicked(var mouse)
-   signal pressAndHold(var mouse)
+   signal clicked()
 
    objectName: root.text
 
-   implicitWidth: Math.max(contentLoader.implicitWidth, 32)
-   implicitHeight: Math.max(contentLoader.implicitHeight, 32)
+   implicitWidth: contentLoader.implicitWidth + 2 * margins
+   implicitHeight: Math.max(contentLoader.implicitHeight, appConfig.defaultButtonSize)
 
    opacity: root.enabled ? 1.0 : appConfig.itemOpacityDisabled
 
@@ -103,11 +102,11 @@ FocusScope {
          id: background
 
          color: root.normalColor
-         opacity: 0.7
+         opacity: appConfig.buttonOpacityNormal
 
          radius: 3
-         border.width: 0
-         border.color: "#CED1D4"
+         border.width: appConfig.borderWidth
+         border.color: appConfig.strokeColor
 
          states: [
             State {
@@ -117,7 +116,7 @@ FocusScope {
                PropertyChanges {
                   target: background
                   color: root.hoverHitColor
-                  opacity: 1.0
+                  opacity: appConfig.buttonOpacityHit
                }
             },
 
@@ -128,7 +127,7 @@ FocusScope {
                PropertyChanges {
                   target: background
                   color: root.hoverHitColor
-                  opacity: 0.5
+                  opacity: appConfig.buttonOpacityHover
                }
             }
          ]
@@ -202,8 +201,8 @@ FocusScope {
 
          PropertyChanges {
             target: root
-            implicitWidth: 32
-            implicitHeight: 32
+            implicitWidth: appConfig.defaultButtonSize
+            implicitHeight: appConfig.defaultButtonSize
          }
       },
 
@@ -215,7 +214,7 @@ FocusScope {
             target: root
             implicitWidth: Math.max(contentLoader.implicitWidth + 2 * root.margins,
                                     root.minWidth)
-            implicitHeight: 32
+            implicitHeight: appConfig.defaultButtonSize
          }
       },
 
@@ -225,7 +224,7 @@ FocusScope {
 
          PropertyChanges {
             target: root
-            implicitHeight: 32
+            implicitHeight: appConfig.defaultButtonSize
          }
       },
 
@@ -243,13 +242,10 @@ FocusScope {
    MouseArea {
       id: mouseArea
       anchors.fill: parent
-
       hoverEnabled: true
 
-      onClicked: function(mouse) {
-          navigation.requestActiveByInteraction()
-
-          root.clicked(mouse)
+      onClicked: function() {
+          root.clicked()
       }
    }
 }
