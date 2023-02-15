@@ -3,6 +3,8 @@ set(QAUDACITY ${CMAKE_PROJECT_NAME})
 
 set(SOURCES
    main.cpp
+   ToolsToolBarModel.cpp
+   ToolsToolBarModel.h
 )
 
 set(RESOURCES
@@ -28,7 +30,6 @@ qt_add_qml_module(
 	VERSION 1.0
 	QML_FILES
 		${QML_SOURCES}
-
 )
 
 set_target_properties(

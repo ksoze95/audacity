@@ -1,16 +1,20 @@
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
+import QtQuick.Shapes
 
 import Audacity.UiComponents
+import qml
 
 ApplicationWindow {
+   id: root
    width: 640
    height: 480
    visible: true
    title: qsTr("Audacity")
 
    required property ApplicationConfiguration appConfig
+   required property ToolsToolBarModel toolsModel
 
    menuBar: MenuBar {
       Menu {
@@ -22,82 +26,17 @@ ApplicationWindow {
       }
    }
 
-   RowLayout {
-      id: rowLayout
+   ListView {
+      id: listView
       spacing: 2
+      width: parent.width
+      height: 100
+      orientation: ListView.Horizontal
+      model: toolsModel;
 
-      FlatButton {
-         id: play
-         icon: IconCode.SOLID_PLAY
-         iconColor: "#0F7745"
-      }
-
-      FlatButton {
-         id: stop
-         icon: IconCode.SOLID_STOP
-      }
-
-      FlatButton {
-         id: rewind
-         icon: IconCode.SOLID_REWIND
-      }
-
-      FlatButton {
-         id: fastFoward
-         icon: IconCode.SOLID_FAST_FORWARD
-      }
-
-      FlatButton {
-         id: record
-         icon: IconCode.SOLID_RECORD
-         iconColor: "#C54444"
-      }
-
-      FlatButton {
-         id: loop
-         icon: IconCode.LOOP
-      }
-
-      FlatButton {
-         id: automation
-         icon: IconCode.AUTOMATION
-      }
-
-      FlatButton {
-         id: zoomIn
-         icon: IconCode.ZOOM_IN
-      }
-
-      FlatButton {
-         id: zoomOut
-         icon: IconCode.ZOOM_OUT
-      }
-
-      FlatButton {
-         id: zoomFitSelection
-         icon: IconCode.ZOOM_FIT_SELECTION
-      }
-
-      FlatButton {
-         id: zoomFitProject
-         icon: IconCode.ZOOM_FIT_PROJECT
-      }
-
-      FlatButton {
-         id: zoomToggle
-         icon: IconCode.ZOOM_TOGGLE
-      }
-
-      FlatButton {
-         id: trim
-         icon: IconCode.TRIM
-         enabled: false
-      }
-
-      FlatButton {
-         id: silence
-         icon: IconCode.SILENCE
-         accentButton: true
+      delegate: FlatButton {
+         icon: model.icon
+         iconColor: model.iconColor
       }
    }
 }
