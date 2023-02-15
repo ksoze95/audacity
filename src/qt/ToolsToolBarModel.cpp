@@ -1,22 +1,22 @@
+#include <algorithm>
 #include "ToolsToolBarModel.h"
 
 ToolsToolBarModel::ToolsToolBarModel(QObject *parent)
    : QAbstractListModel(parent)
 {
-   m_items << ToolsToolBarItem(IconCode::Code::SOLID_PLAY, QColor("#0F7745"), [this](){this->play();})
-           << ToolsToolBarItem(IconCode::Code::SOLID_STOP, [this](){this->stop();})
-           << ToolsToolBarItem(IconCode::Code::SOLID_REWIND, [this](){this->rewind();})
-           << ToolsToolBarItem(IconCode::Code::SOLID_FAST_FORWARD, [this](){this->play();})
-           << ToolsToolBarItem(IconCode::Code::SOLID_RECORD, QColor("#C54444"), [this](){this->record();})
-           << ToolsToolBarItem(IconCode::Code::LOOP, [this](){this->loop();})
-           << ToolsToolBarItem(IconCode::Code::AUTOMATION, [this](){this->automation();})
-           << ToolsToolBarItem(IconCode::Code::ZOOM_IN, [this](){this->zoomIn();})
-           << ToolsToolBarItem(IconCode::Code::ZOOM_OUT, [this](){this->zoomOut(); })
-           << ToolsToolBarItem(IconCode::Code::ZOOM_FIT_SELECTION, [this](){this->fitSelection();})
-           << ToolsToolBarItem(IconCode::Code::ZOOM_FIT_PROJECT, [this](){this->fitProject();})
-           << ToolsToolBarItem(IconCode::Code::ZOOM_TOGGLE, [this](){this->zoomToggle();})
-           << ToolsToolBarItem(IconCode::Code::TRIM, [this](){this->trim();})
-           << ToolsToolBarItem(IconCode::Code::SILENCE, [this]() {this->silence();});
+   m_items << ToolsToolBarItem("play", IconCode::Code::SOLID_PLAY, QColor("#0F7745"), [this](){ this->play(); })
+           << ToolsToolBarItem("stop", IconCode::Code::SOLID_STOP, [this](){ this->stop(); })
+           << ToolsToolBarItem("rewind", IconCode::Code::SOLID_REWIND, [this](){ this->rewind(); })
+           << ToolsToolBarItem("fastForward", IconCode::Code::SOLID_FAST_FORWARD, [this](){ this->fastForward(); })
+           << ToolsToolBarItem("record", IconCode::Code::SOLID_RECORD, QColor("#C54444"), [this](){ this->record(); })
+           << ToolsToolBarItem("loop", IconCode::Code::LOOP, [this](){ this->loop(); })
+           << ToolsToolBarItem("automation", IconCode::Code::AUTOMATION, [this](){ this->automation(); })
+           << ToolsToolBarItem("zoomIn", IconCode::Code::ZOOM_IN, [this](){ this->zoomIn(); })
+           << ToolsToolBarItem("zoomOut", IconCode::Code::ZOOM_OUT, [this](){ this->zoomOut(); })
+           << ToolsToolBarItem("fitSelection", IconCode::Code::ZOOM_FIT_SELECTION, [this](){ this->fitSelection(); })
+           << ToolsToolBarItem("fitProject", IconCode::Code::ZOOM_FIT_PROJECT, [this](){ this->fitProject(); })
+           << ToolsToolBarItem("trim", IconCode::Code::TRIM, [this](){ this->trim(); })
+           << ToolsToolBarItem("silence", IconCode::Code::SILENCE, [this](){ this->silence(); });
 }
 
 QVariant ToolsToolBarModel::data(const QModelIndex& index, int role) const
@@ -26,10 +26,15 @@ QVariant ToolsToolBarModel::data(const QModelIndex& index, int role) const
 
    const ToolsToolBarItem& item = m_items[index.row()];
 
-   if (role == IconRole)
+   switch (role)
+   {
+   case IdRole:
+      return item.id;
+   case IconRole:
       return static_cast<char16_t>(item.icon);
-   else if (role == IconColorRole)
+   case IconColorRole:
       return item.iconColor;
+   }
 
    return QVariant();
 }
@@ -46,81 +51,90 @@ QHash<int, QByteArray> ToolsToolBarModel::roleNames() const
 {
    static QHash<int, QByteArray> mapping
    {
+      { IdRole, "id" },
       { IconRole, "icon" },
-      { IconColorRole, "iconColor" },
-      { ActionRole, "action" }
+      { IconColorRole, "iconColor" }
    };
 
    return mapping;
 }
 
-Q_INVOKABLE void ToolsToolBarModel::play()
+void ToolsToolBarModel::play()
 {
    qDebug() << "Play clicked";
 }
 
-Q_INVOKABLE void ToolsToolBarModel::stop()
+void ToolsToolBarModel::stop()
 {
    qDebug() << "Stop clicked";
 }
 
-Q_INVOKABLE void ToolsToolBarModel::rewind()
+void ToolsToolBarModel::rewind()
 {
    qDebug() << "Rewind clicked";
 }
 
-Q_INVOKABLE void ToolsToolBarModel::fastForward()
+void ToolsToolBarModel::fastForward()
 {
    qDebug() << "Fast forward clicked";
 }
 
-Q_INVOKABLE void ToolsToolBarModel::record()
+void ToolsToolBarModel::record()
 {
    qDebug() << "Record clicked";
 }
 
-Q_INVOKABLE void ToolsToolBarModel::loop()
+void ToolsToolBarModel::loop()
 {
    qDebug() << "Loop clicked";
 }
 
-Q_INVOKABLE void ToolsToolBarModel::automation()
+void ToolsToolBarModel::automation()
 {
    qDebug() << "Automation clicked";
 }
 
-Q_INVOKABLE void ToolsToolBarModel::zoomIn()
+void ToolsToolBarModel::zoomIn()
 {
-   qDebug() << "Automation clicked";
+   qDebug() << "Zoom in clicked";
 }
 
-Q_INVOKABLE void ToolsToolBarModel::zoomOut()
+void ToolsToolBarModel::zoomOut()
 {
    qDebug() << "Zoom out clicked";
 }
 
-Q_INVOKABLE void ToolsToolBarModel::fitSelection()
+void ToolsToolBarModel::fitSelection()
 {
-   qDebug() << "Zoom fit selection clicked";
+   qDebug() << "Zoom fit to selection clicked";
 }
 
-Q_INVOKABLE void ToolsToolBarModel::fitProject()
+void ToolsToolBarModel::fitProject()
 {
-   qDebug() << "Zoom fit project clicked";
+   qDebug() << "Zoom fit to project clicked";
 }
 
-Q_INVOKABLE void ToolsToolBarModel::zoomToggle()
+void ToolsToolBarModel::zoomToggle()
 {
    qDebug() << "Zoom toggle clicked";
 }
 
-Q_INVOKABLE void ToolsToolBarModel::trim()
+void ToolsToolBarModel::trim()
 {
    qDebug() << "Trim clicked";
 }
 
-Q_INVOKABLE void ToolsToolBarModel::silence()
+void ToolsToolBarModel::silence()
 {
    qDebug() << "Silence clicked";
 }
 
+void ToolsToolBarModel::handleClickEvent(QString id)
+{
+   auto it = std::find_if(m_items.begin(), m_items.end(), [&id](auto& item){ return item.id == id; });
+   if (it != m_items.end())
+   {
+      if (it->handleClicked)
+         it->handleClicked();
+   }
+}

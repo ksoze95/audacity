@@ -3,8 +3,8 @@ import QtQuick.Controls
 import QtQuick.Layouts
 import QtQuick.Shapes
 
+import Audacity
 import Audacity.UiComponents
-import qml
 
 ApplicationWindow {
    id: root
@@ -14,7 +14,7 @@ ApplicationWindow {
    title: qsTr("Audacity")
 
    required property ApplicationConfiguration appConfig
-   required property ToolsToolBarModel toolsModel
+   required property ToolsToolBarModel toolsToolbar
 
    menuBar: MenuBar {
       Menu {
@@ -32,11 +32,15 @@ ApplicationWindow {
       width: parent.width
       height: 100
       orientation: ListView.Horizontal
-      model: toolsModel;
+      model: toolsToolbar;
 
       delegate: FlatButton {
          icon: model.icon
          iconColor: model.iconColor
+
+         onClicked: {
+            toolsToolbar.handleClickEvent(model.id)
+         }
       }
    }
 }

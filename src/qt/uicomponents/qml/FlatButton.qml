@@ -245,7 +245,7 @@ FocusScope {
       hoverEnabled: true
 
       onClicked: function() {
-          root.clicked()
+         root.clicked()
       }
    }
 }

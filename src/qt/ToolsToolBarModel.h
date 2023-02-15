@@ -6,27 +6,28 @@
 #include <qqml.h>
 #include <QString>
 #include <QVector>
-#include <functional>
 #include <utility>
 #include "uicomponents/IconCode.h"
 
 struct ToolsToolBarItem
 {
-   ToolsToolBarItem(IconCode::Code icon, QColor iconColor, std::function<void()> clickedMethod)
-      : icon{ icon }
+   ToolsToolBarItem(QString id, IconCode::Code icon, QColor iconColor, std::function<void()> handleClicked = std::function<void()>())
+      : id{ id }
+      , icon{ icon }
       , iconColor{ iconColor }
-      , clickedMethod(std::move(clickedMethod))
+      , handleClicked( std::move(handleClicked) )
    {
    }
 
-   explicit ToolsToolBarItem(IconCode::Code icon, std::function<void()> clickedMethod)
-      : ToolsToolBarItem(icon, QColor("black"), std::move(clickedMethod))
+   explicit ToolsToolBarItem(QString id, IconCode::Code icon, std::function<void()> handleClicked = std::function<void()>())
+      : ToolsToolBarItem(id, icon, QColor("black"), std::move(handleClicked))
    {
    }
 
+   QString id;
    IconCode::Code icon;
    QColor iconColor;
-   std::function<void()> clickedMethod;
+   std::function<void()> handleClicked;
 };
 
 class ToolsToolBarModel : public QAbstractListModel
@@ -41,26 +42,29 @@ public:
    int rowCount(const QModelIndex& parent = QModelIndex()) const override;
    QHash<int, QByteArray> roleNames() const override;
 
-   Q_INVOKABLE void play();
-   Q_INVOKABLE void stop();
-   Q_INVOKABLE void rewind();
-   Q_INVOKABLE void fastForward();
-   Q_INVOKABLE void record();
-   Q_INVOKABLE void loop();
-   Q_INVOKABLE void automation();
-   Q_INVOKABLE void zoomIn();
-   Q_INVOKABLE void zoomOut();
-   Q_INVOKABLE void fitSelection();
-   Q_INVOKABLE void fitProject();
-   Q_INVOKABLE void zoomToggle();
-   Q_INVOKABLE void trim();
-   Q_INVOKABLE void silence();
+   Q_INVOKABLE void handleClickEvent(QString id);
+
+private:
+    void play();
+    void stop();
+    void rewind();
+    void fastForward();
+    void record();
+    void loop();
+    void automation();
+    void zoomIn();
+    void zoomOut();
+    void fitSelection();
+    void fitProject();
+    void zoomToggle();
+    void trim();
+    void silence();
 
 private:
    enum Roles {
-      IconRole = Qt::UserRole + 1,
-      IconColorRole,
-      ActionRole
+      IdRole = Qt::UserRole + 1,
+      IconRole,
+      IconColorRole
    };
 
    QVector<ToolsToolBarItem> m_items;

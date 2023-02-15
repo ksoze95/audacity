@@ -26,7 +26,7 @@ set(QML_SOURCES
 
 qt_add_qml_module(
 	${QAUDACITY}
-	URI qml
+	URI Audacity
 	VERSION 1.0
 	QML_FILES
 		${QML_SOURCES}
