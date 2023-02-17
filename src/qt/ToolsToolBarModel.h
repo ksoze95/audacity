@@ -27,6 +27,8 @@ struct ToolsToolBarItem
    QString id;
    IconCode::Code icon;
    QColor iconColor;
+   int width{ 32 };
+   int height{ 32 };
    std::function<void()> handleClicked;
 };
 

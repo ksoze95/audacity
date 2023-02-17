@@ -14,7 +14,7 @@ ApplicationWindow {
    title: qsTr("Audacity")
 
    required property ApplicationConfiguration appConfig
-   required property ToolsToolBarModel toolsToolbar
+   required property ToolsToolBarModel toolsToolbarModel
 
    menuBar: MenuBar {
       Menu {
@@ -26,20 +26,27 @@ ApplicationWindow {
       }
    }
 
-   ListView {
-      id: listView
-      spacing: 2
-      width: parent.width
-      height: 100
-      orientation: ListView.Horizontal
-      model: toolsToolbar;
+   header: ToolBar {
+      id: toolsToolBar
+      height: 52
+      ListView {
+         id: listView
+         interactive: false
+         contentWidth: parent.width
+         spacing: 2
+         width: parent.width
+         height: parent.height
+         orientation: ListView.Horizontal
+         model: toolsToolbarModel;
 
-      delegate: FlatButton {
-         icon: model.icon
-         iconColor: model.iconColor
+         delegate: FlatButton {
+            icon: model.icon
+            iconColor: model.iconColor
+            anchors.verticalCenter: parent.verticalCenter
 
-         onClicked: {
-            toolsToolbar.handleClickEvent(model.id)
+            onClicked: {
+               toolsToolbar.handleClickEvent(model.id)
+            }
          }
       }
    }

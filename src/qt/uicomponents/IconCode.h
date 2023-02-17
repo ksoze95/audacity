@@ -46,6 +46,8 @@ public:
 
       LOOP = 0xEF1F,
 
+      TOOLBAR_GRIP = 0xF3A2,
+
       AUTOMATION = 0xF3CB,
 
       ZOOM_TOGGLE = 0xF437,

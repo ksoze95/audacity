@@ -4,7 +4,8 @@
 ToolsToolBarModel::ToolsToolBarModel(QObject *parent)
    : QAbstractListModel(parent)
 {
-   m_items << ToolsToolBarItem("play", IconCode::Code::SOLID_PLAY, QColor("#0F7745"), [this](){ this->play(); })
+   m_items << ToolsToolBarItem("grip", IconCode::Code::TOOLBAR_GRIP)
+           << ToolsToolBarItem("play", IconCode::Code::SOLID_PLAY, QColor("#0F7745"), [this](){ this->play(); })
            << ToolsToolBarItem("stop", IconCode::Code::SOLID_STOP, [this](){ this->stop(); })
            << ToolsToolBarItem("rewind", IconCode::Code::SOLID_REWIND, [this](){ this->rewind(); })
            << ToolsToolBarItem("fastForward", IconCode::Code::SOLID_FAST_FORWARD, [this](){ this->fastForward(); })

@@ -11,14 +11,14 @@ int main(int argc, char *argv[])
    QGuiApplication app(argc, argv);
 
    ApplicationConfiguration appConfig;
-   ToolsToolBarModel toolsToolbar;
+   ToolsToolBarModel toolsToolbarModel;
 
    QQmlApplicationEngine engine;
    engine.addImportPath(":/uicomponents");
 
    engine.setInitialProperties({
       { "appConfig", QVariant::fromValue(&appConfig) },
-      { "toolsToolbar", QVariant::fromValue(&toolsToolbar) }
+      { "toolsToolbarModel", QVariant::fromValue(&toolsToolbarModel) }
    });
    engine.load("qrc:/qml/main.qml");
 
