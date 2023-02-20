@@ -46,6 +46,8 @@ public:
 
       LOOP = 0xEF1F,
 
+      SETUP = 0xEF55,
+
       TOOLBAR_GRIP = 0xF3A2,
 
       AUTOMATION = 0xF3CB,
@@ -62,6 +64,7 @@ public:
       SOLID_REWIND = 0xF448,
       SOLID_FAST_FORWARD = 0xF449,
       SOLID_RECORD = 0xF44A,
+      SOLID_PAUSE = 0xF44B,
 
       NONE = 0xFFFF
    };

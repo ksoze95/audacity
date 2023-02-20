@@ -1,5 +1,7 @@
 <RCC>
-   <qresource prefix="/">
-       <file>qml/main.qml</file>
-   </qresource>
+    <qresource prefix="/">
+        <file>qml/main.qml</file>
+        <file>qml/ToolsToolbar.qml</file>
+        <file>qml/Workspace.qml</file>
+    </qresource>
 </RCC>

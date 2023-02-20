@@ -15,6 +15,8 @@ set(MODULE_QML_SOURCES
    qml/FlatButton.qml
    qml/StyledIconLabel.qml
    qml/StyledTextLabel.qml
+   qml/ToolbarGrip.qml
+   qml/ToolbarSeparator.qml
 )
 
 qt_add_qml_module(${MODULE_NAME}

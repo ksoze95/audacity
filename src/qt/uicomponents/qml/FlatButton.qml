@@ -106,7 +106,7 @@ FocusScope {
 
          radius: 3
          border.width: appConfig.borderWidth
-         border.color: appConfig.strokeColor
+         border.color: appConfig.strokeColor1
 
          states: [
             State {

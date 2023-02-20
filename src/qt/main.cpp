@@ -4,21 +4,17 @@
 #include <QtQml/QQmlApplicationEngine>
 #include <QtWidgets/QApplication>
 #include "uicomponents/ApplicationConfiguration.h"
-#include "ToolsToolBarModel.h"
 
 int main(int argc, char *argv[])
 {
    QGuiApplication app(argc, argv);
-
    ApplicationConfiguration appConfig;
-   ToolsToolBarModel toolsToolbarModel;
 
    QQmlApplicationEngine engine;
    engine.addImportPath(":/uicomponents");
 
    engine.setInitialProperties({
-      { "appConfig", QVariant::fromValue(&appConfig) },
-      { "toolsToolbarModel", QVariant::fromValue(&toolsToolbarModel) }
+      { "appConfig", QVariant::fromValue(&appConfig) }
    });
    engine.load("qrc:/qml/main.qml");
 

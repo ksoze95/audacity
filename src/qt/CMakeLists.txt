@@ -3,8 +3,8 @@ set(QAUDACITY ${CMAKE_PROJECT_NAME})
 
 set(SOURCES
    main.cpp
-   ToolsToolBarModel.cpp
-   ToolsToolBarModel.h
+   ToolsToolbarHandler.cpp
+   ToolsToolbarHandler.h
 )
 
 set(RESOURCES
@@ -22,6 +22,8 @@ qt_add_executable(${QAUDACITY} ${SOURCES} ${QT_RESOURCES} MANUAL_FINALIZATION)
 
 set(QML_SOURCES
    qml/main.qml
+   qml/ToolsToolbar.qml
+   qml/Workspace.qml
 )
 
 qt_add_qml_module(

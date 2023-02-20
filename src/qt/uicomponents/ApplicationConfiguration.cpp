@@ -35,27 +35,34 @@ QFont ApplicationConfiguration::iconFont() const
    return m_iconFont;
 }
 
-void ApplicationConfiguration::setIconFont(const QFont& font)
-{
-   if (m_iconFont != font)
-   {
-      m_iconFont = font;
-      emit themeChanged();
-   }
-}
-
 QFont ApplicationConfiguration::bodyFont() const
 {
    return m_bodyFont;
 }
 
-void ApplicationConfiguration::setBodyFont(const QFont& font)
+QColor ApplicationConfiguration::backgroundColor1() const
 {
-   if (m_bodyFont == font)
-   {
-      m_bodyFont = font;
-      emit themeChanged();
-   }
+   return m_backgroundColor1;
+}
+
+QColor ApplicationConfiguration::backgroundColor2() const
+{
+   return m_backgroundColor2;
+}
+
+QColor ApplicationConfiguration::backgroundColor3() const
+{
+   return m_backgroundColor3;
+}
+
+QColor ApplicationConfiguration::fontColor1() const
+{
+   return m_fontColor1;
+}
+
+QColor ApplicationConfiguration::fontColor2() const
+{
+   return m_fontColor2;
 }
 
 QColor ApplicationConfiguration::buttonColor() const
@@ -63,41 +70,59 @@ QColor ApplicationConfiguration::buttonColor() const
    return m_buttonColor;
 }
 
-void ApplicationConfiguration::setButtonColor(const QColor& color)
-{
-   if (m_buttonColor != color)
-   {
-      m_buttonColor = color;
-      emit themeChanged();
-   }
-}
-
 QColor ApplicationConfiguration::accentColor() const
 {
    return m_accentColor;
 }
 
-void ApplicationConfiguration::setAccentColor(const QColor& color)
+QColor ApplicationConfiguration::textFieldColor() const
 {
-   if (m_accentColor != color)
-   {
-      m_accentColor = color;
-      emit themeChanged();
-   }
+   return m_textFieldColor;
 }
 
-QColor ApplicationConfiguration::strokeColor() const
+QColor ApplicationConfiguration::timecodeColor() const
 {
-   return m_strokeColor;
+   return m_timecodeColor;
 }
 
-void ApplicationConfiguration::setStrokeColor(const QColor& color)
+QColor ApplicationConfiguration::playColor() const
 {
-   if (m_strokeColor != color)
-   {
-      m_strokeColor = color;
-      emit themeChanged();
-   }
+   return m_playColor;
+}
+
+QColor ApplicationConfiguration::recordColor() const
+{
+   return m_recordColor;
+}
+
+QColor ApplicationConfiguration::strokeColor1() const
+{
+   return m_strokeColor1;
+}
+
+QColor ApplicationConfiguration::waveformRMSColor() const
+{
+   return m_waveformRMSColor;
+}
+
+QColor ApplicationConfiguration::waveformHighlightColor() const
+{
+   return m_waveformHighlightColor;
+}
+
+QColor ApplicationConfiguration::waveformPeakColor() const
+{
+   return m_waveformPeakColor;
+}
+
+QColor ApplicationConfiguration::clipRegionColor() const
+{
+   return m_clipRegionColor;
+}
+
+QColor ApplicationConfiguration::clipStrokeColor() const
+{
+   return m_clipRegionColor;
 }
 
 qreal ApplicationConfiguration::itemOpacityDisabled() const
@@ -105,27 +130,9 @@ qreal ApplicationConfiguration::itemOpacityDisabled() const
    return m_itemOpacityDisabled;
 }
 
-void ApplicationConfiguration::setItemOpacityDisabled(qreal opacity)
-{
-   if (m_itemOpacityDisabled != opacity)
-   {
-      m_itemOpacityDisabled = opacity;
-      emit themeChanged();
-   }
-}
-
 qreal ApplicationConfiguration::buttonOpacityNormal() const
 {
    return m_buttonOpacityNormal;
-}
-
-void ApplicationConfiguration::setButtonOpacityNormal(qreal opacity)
-{
-   if (m_buttonOpacityNormal != opacity)
-   {
-      m_buttonOpacityNormal = opacity;
-      emit themeChanged();
-   }
 }
 
 qreal ApplicationConfiguration::buttonOpacityHit() const
@@ -133,27 +140,9 @@ qreal ApplicationConfiguration::buttonOpacityHit() const
    return m_buttonOpacityHit;
 }
 
-void ApplicationConfiguration::setButtonOpacityHit(qreal opacity)
-{
-   if (m_buttonOpacityHit != opacity)
-   {
-      m_buttonOpacityHit = opacity;
-      emit themeChanged();
-   }
-}
-
 qreal ApplicationConfiguration::buttonOpacityHover() const
 {
    return m_buttonOpacityHover;
-}
-
-void ApplicationConfiguration::setButtonOpacityHover(qreal opacity)
-{
-   if (m_buttonOpacityHover != opacity)
-   {
-      m_buttonOpacityHover = opacity;
-      emit themeChanged();
-   }
 }
 
 int ApplicationConfiguration::borderWidth() const
@@ -161,25 +150,7 @@ int ApplicationConfiguration::borderWidth() const
    return m_borderWidth;
 }
 
-void ApplicationConfiguration::setBorderWidth(int width)
-{
-   if (m_borderWidth != width)
-   {
-      m_borderWidth = width;
-      emit themeChanged();
-   }
-}
-
 int ApplicationConfiguration::defaultButtonSize() const
 {
    return m_defaultButtonSize;
-}
-
-void ApplicationConfiguration::setDefaultButtonSize(int size)
-{
-   if (m_defaultButtonSize != size)
-   {
-      m_defaultButtonSize = size;
-      emit themeChanged();
-   }
 }
