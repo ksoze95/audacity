@@ -3,8 +3,12 @@ set(QAUDACITY ${CMAKE_PROJECT_NAME})
 
 set(SOURCES
    main.cpp
+   EditToolbarHandler.cpp
+   EditToolbarHandler.h
    ToolsToolbarHandler.cpp
    ToolsToolbarHandler.h
+   TransportToolbarHandler.cpp
+   TransportToolbarHandler.h
 )
 
 set(RESOURCES
@@ -22,7 +26,9 @@ qt_add_executable(${QAUDACITY} ${SOURCES} ${QT_RESOURCES} MANUAL_FINALIZATION)
 
 set(QML_SOURCES
    qml/main.qml
+   qml/EditToolbar.qml
    qml/ToolsToolbar.qml
+   qml/TransportToolbar.qml
    qml/Workspace.qml
 )
 

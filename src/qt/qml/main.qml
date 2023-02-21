@@ -11,6 +11,8 @@ ApplicationWindow {
    height: 480
    visible: true
    title: qsTr("Audacity")
+   minimumWidth: 480
+   minimumHeight: 540
 
    required property ApplicationConfiguration appConfig
    property alias workspaceMode: toolsToolbar.workspaceMode
