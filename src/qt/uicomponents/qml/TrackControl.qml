@@ -11,6 +11,8 @@ Item {
 
    property var trackType: undefined
    property string label: ""
+   property bool muted: false
+   property bool soloed: false
 
    signal optionsClicked()
    signal muteClicked()
@@ -64,6 +66,7 @@ Item {
       height: 20
       text: qsTr("M")
       textFont.pixelSize: 12
+      accentButton: muted
       onClicked: root.muteClicked()
    }
 
@@ -75,6 +78,7 @@ Item {
       height: 20
       text: qsTr("S")
       textFont.pixelSize: 12
+      accentButton: soloed
       onClicked: root.soloClicked()
    }
 

@@ -27,6 +27,7 @@ set(MODULE_QML_SOURCES
    qml/TimeControl.qml
    qml/TimeControlTester.qml
    qml/TrackControl.qml
+   qml/TrackVolumeMeter.qml
    qml/ToolbarSeparator.qml
    qml/VolumeControl.qml
    qml/VolumeControlTester.qml
