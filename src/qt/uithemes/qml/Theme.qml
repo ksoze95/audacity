@@ -6,7 +6,7 @@ QtObject {
    readonly property real itemOpacityDisabled: 0.3
    readonly property real buttonOpacityNormal: 0.7
    readonly property real buttonOpacityHit: 1.0
-   readonly property real buttonOpacityHover: 0.5
+   readonly property real buttonOpacityHover: 0.3
    readonly property int borderWidth: 0
    readonly property int defaultButtonSize: 32
 
