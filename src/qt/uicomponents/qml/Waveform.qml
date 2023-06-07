@@ -16,6 +16,8 @@ Rectangle {
 
    property alias name: label.text
 
+   signal optionsClicked()
+
    states: [
       State {
          name: "LEFT_RESIZE"
