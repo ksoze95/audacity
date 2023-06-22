@@ -60,6 +60,10 @@ if( NOT ${_OPT}enable_experimental_qt_support )
       lib-wx-wrappers
       lib-shuttlegui
    )
+else()
+   list(APPEND LIBRARIES
+      lib-project-qml
+   )
 endif()
 
 if ( ${_OPT}has_networking )
