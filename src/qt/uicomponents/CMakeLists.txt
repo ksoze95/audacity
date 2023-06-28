@@ -29,7 +29,7 @@ set(MODULE_QML_SOURCES
    qml/VideoTrackControlPanel.qml
    qml/VolumeControl.qml
    qml/VolumeControlTester.qml
-   qml/WaveClipView.qml
+   qml/WaveClipBody.qml
    qml/Waveform.qml
 )
 

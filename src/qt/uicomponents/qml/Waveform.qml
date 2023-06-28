@@ -80,7 +80,7 @@ Rectangle {
       onClicked: root.optionsClicked()
    }
 
-   WaveClipView {
+   WaveClipBody {
       id: clip
       x: 1
       y: 19
