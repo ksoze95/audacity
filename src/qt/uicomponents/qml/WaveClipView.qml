@@ -12,7 +12,7 @@ Rectangle {
    height: implicitHeight
    color: UiTheme.clipHeaderColor
    radius: 4
-   objectName: "Waveform"
+   objectName: "WaveClipView"
 
    property alias name: label.text
 
