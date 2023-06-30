@@ -18,6 +18,8 @@ std::shared_ptr<AudacityProject> CreateProject()
 
    auto& engine = ProjectQMLEnvironment::Get(*project).GetEngine();
    engine.addImportPath(":/uicomponents");
+   engine.addImportPath(":/uithemes");
+
    engine.setInitialProperties({
       { "appConfig", QVariant::fromValue(&appConfig) },
    });

@@ -25,8 +25,9 @@ qt_add_resources(QT_RESOURCES
    ${RESOURCES}
 )
 
-add_subdirectory(uicomponents)
 add_subdirectory(numeric-formats)
+add_subdirectory(uicomponents)
+add_subdirectory(uithemes)
 
 set(QT_TRANSLATION_SOURCES
    translations/de.ts
@@ -59,8 +60,9 @@ qt_add_qml_module(
 	VERSION 1.0
    DEPENDENCIES
       QtQuick
-      Audacity.UiComponents
       Audacity.NumericFormats
+      Audacity.UiComponents
+      Audacity.UiThemes
 	QML_FILES
 		${QML_SOURCES}
    NO_LINT
@@ -103,8 +105,9 @@ target_link_libraries(
       Qt6::Gui
       Qt6::Quick
       kddockwidgets::kddockwidgets
-      uicomponentsplugin
       numeric-formatsplugin
+      uithemesplugin
+      uicomponentsplugin
       lib-project
       lib-project-qml
       lib-preferences

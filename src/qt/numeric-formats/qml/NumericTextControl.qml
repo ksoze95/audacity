@@ -2,8 +2,9 @@ import QtQuick
 import QtQuick.Layouts
 import QtQuick.Controls
 
-import Audacity.UiComponents
 import Audacity.NumericFormats
+import Audacity.UiComponents
+import Audacity.UiThemes
 
 Item {
 
@@ -52,7 +53,7 @@ Item {
    Component {
       id : timeUnitComponent
       Text {
-         color: appConfig.fontColor2
+         color: UiTheme.fontColor2
          font {
             family: appConfig.bodyFont.family
             pointSize: 14
@@ -68,7 +69,7 @@ Item {
       id : separatorSymbolComponent
       Text {
 
-         color: appConfig.fontColor2
+         color: UiTheme.fontColor2
          font {
             family: appConfig.timecodeFont.family
             pointSize: 14
@@ -96,7 +97,7 @@ Item {
             anchors.fill : parent
 
             id : highlight
-            color : appConfig.backgroundColor3
+            color : UiTheme.backgroundColor3
             opacity : 0
          }
 
@@ -106,7 +107,7 @@ Item {
             anchors.baselineOffset : -8
 
             id : text
-            color: appConfig.fontColor2
+            color: UiTheme.fontColor2
             font {
                family : appConfig.timecodeFont.family
                pointSize : 14
@@ -139,7 +140,7 @@ Item {
             },
             State {
                name: "selected"
-               when: activeFocus 
+               when: activeFocus
 
                PropertyChanges {
                   target : highlight
@@ -162,9 +163,9 @@ Item {
          Layout.fillHeight : true
 
          implicitWidth : timeLayout.Layout.minimumWidth + timeLayout.anchors.leftMargin + timeLayout.anchors.rightMargin
-         
+
          radius : 3
-         color : appConfig.timecodeColor
+         color : UiTheme.timecodeColor
 
          RowLayout
          {
@@ -185,14 +186,14 @@ Item {
          implicitWidth : 16
 
          radius : 3
-         color : appConfig.timecodeColor
+         color : UiTheme.timecodeColor
          Text
          {
             anchors.fill : parent
-            
+
             verticalAlignment: Text.AlignVCenter
             horizontalAlignment: Text.AlignHCenter
-            color: appConfig.fontColor2
+            color: UiTheme.fontColor2
             text: String.fromCharCode(IconCode.SMALL_ARROW_DOWN)
 
             font {
