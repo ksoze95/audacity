@@ -8,8 +8,8 @@ import Audacity.UiThemes
 
 ApplicationWindow {
    id: root
-   width: 1024
-   height: 480
+   width: 1368
+   height: 912
    visible: true
    title: qsTr("Audacity")
    minimumWidth: 480
@@ -28,6 +28,11 @@ ApplicationWindow {
 
    TranslationManager {
       id: translationManager
+   }
+
+   CustomiseToolbar {
+      id: customiseToolbar
+      visible: false
    }
 
    menuBar: MenuBar {
@@ -92,6 +97,7 @@ ApplicationWindow {
             onTriggered:{
                language = "en"
                translationManager.ChangeLanguage(language)
+               toolsToolbar.refreshSetup()
             }
          }
 
@@ -103,6 +109,7 @@ ApplicationWindow {
             onTriggered: {
                language = "de"
                translationManager.ChangeLanguage(language)
+               toolsToolbar.refreshSetup()
             }
          }
       }
@@ -138,6 +145,7 @@ ApplicationWindow {
    header: ToolsToolbar {
       id: toolsToolbar
 
+      onSetupClicked: customiseToolbar.show()
       onPlaybackStarted: timelineRuler.start()
       onPlaybackStopped: timelineRuler.stop()
       onPlaybackPaused: timelineRuler.pause()

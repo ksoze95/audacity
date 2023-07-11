@@ -13,6 +13,8 @@ Item {
    objectName: "TimeControl"
 
    property alias formatType: display.formatType
+   property color iconColor: appConfig.fontColor1
+   property int icon: IconCode.TIMECODE
 
    enum FormatType {
       Seconds,

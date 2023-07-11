@@ -8,8 +8,10 @@ set(SOURCES
    main.cpp
    EditToolbarHandler.cpp
    EditToolbarHandler.h
-   ToolsToolbarHandler.cpp
-   ToolsToolbarHandler.h
+   MasterVolumeToolbarHandler.cpp
+   MasterVolumeToolbarHandler.h
+   TimeToolbarHandler.cpp
+   TimeToolbarHandler.h
    TranslationManager.cpp
    TranslationManager.h
    TransportToolbarHandler.cpp
@@ -43,6 +45,7 @@ qt_add_translations(
 
 set(QML_SOURCES
    qml/main.qml
+   qml/CustomiseToolbar.qml
    qml/EditToolbar.qml
    qml/MasterVolumeToolbar.qml
    qml/Sidebar.qml

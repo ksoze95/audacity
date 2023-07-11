@@ -11,6 +11,7 @@ Item {
    height: implicitHeight
    implicitHeight: 48
    implicitWidth: contents.width
+   visible: toolbarHandler.toolbarVisible
 
    objectName: "TransportToolbar"
 
@@ -24,6 +25,10 @@ Item {
    signal playbackStopped()
    signal playbackPaused()
    signal updateStatusBar(status: string)
+
+   function registerToolbarConfiguration() {
+      toolbarHandler.RegisterToolbarConfiguration()
+   }
 
    TransportToolbarHandler {
       id: toolbarHandler
@@ -69,12 +74,14 @@ Item {
             id: play
             icon: isPlaying ? IconCode.SOLID_PAUSE : IconCode.SOLID_PLAY
             iconColor: isPlaying ? UiTheme.fontColor1 : UiTheme.playColor
+            visible: toolbarHandler.playVisible
             onClicked: toolbarHandler.Play()
          }
 
          FlatButton {
             id: stop
             icon: IconCode.SOLID_STOP
+            visible: toolbarHandler.stopVisible
             onClicked: toolbarHandler.Stop()
          }
 
@@ -82,21 +89,21 @@ Item {
             id: record
             icon: IconCode.SOLID_RECORD
             iconColor: UiTheme.recordColor
-            visible: root.workspaceMode === Workspace.Mode.Classic
+            visible: toolbarHandler.recordVisible && root.workspaceMode === Workspace.Mode.Classic
             onClicked: toolbarHandler.Record()
          }
 
          FlatButton {
             id: rewind
             icon: IconCode.SOLID_REWIND
-            visible: root.workspaceMode !== Workspace.Mode.SimpleRecording
+            visible: toolbarHandler.rewindVisible && root.workspaceMode !== Workspace.Mode.SimpleRecording
             onClicked: toolbarHandler.Rewind()
          }
 
          FlatButton {
             id: fastForward
             icon: IconCode.SOLID_FAST_FORWARD
-            visible: root.workspaceMode !== Workspace.Mode.SimpleRecording
+            visible: toolbarHandler.fastForwardVisible && root.workspaceMode !== Workspace.Mode.SimpleRecording
             onClicked: toolbarHandler.FastForward()
          }
 
@@ -104,14 +111,14 @@ Item {
             id: record2
             icon: IconCode.SOLID_RECORD
             iconColor: UiTheme.recordColor
-            visible: root.workspaceMode !== Workspace.Mode.Classic
+            visible: toolbarHandler.recordVisible && root.workspaceMode !== Workspace.Mode.Classic
             onClicked: toolbarHandler.Record()
          }
 
          FlatButton {
             id: loop
             icon: IconCode.LOOP
-            visible: root.workspaceMode !== Workspace.Mode.SimpleRecording
+            visible: toolbarHandler.loopVisible && root.workspaceMode !== Workspace.Mode.SimpleRecording
             onClicked: toolbarHandler.Loop()
          }
       }
@@ -119,5 +126,9 @@ Item {
       ToolbarSeparator {
          visible: separatorVisible
       }
+   }
+
+   Component.onCompleted: {
+      toolbarHandler.StoreToolbarManager(ToolbarManager)
    }
 }
