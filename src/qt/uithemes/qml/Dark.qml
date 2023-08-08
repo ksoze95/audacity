@@ -23,4 +23,5 @@ Theme {
    waveformPeakColor: "#3232C8"
    clipStrokeColor: "#42484B"
    clipHeaderColor: "#4F5559"
+   textHighlightColor: "#2D5A85"
 }
