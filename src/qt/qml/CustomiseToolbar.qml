@@ -23,6 +23,7 @@ ApplicationWindow {
          id: title
          anchors.fill: parent
          text: qsTr("Customise toolbar")
+         color: UiTheme.fontColor1
          verticalAlignment: Text.AlignVCenter
 
          font {

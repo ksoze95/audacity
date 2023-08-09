@@ -124,7 +124,10 @@ ApplicationWindow {
                autoExclusive: true
                checkable: true
                checked: theme === text
-               onTriggered: UiTheme.changeTheme(text)
+               onTriggered: {
+                  UiTheme.changeTheme(text)
+                  toolsToolbar.refreshSetup()
+               }
             }
          }
       }
