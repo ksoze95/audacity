@@ -2,9 +2,42 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="de" sourcelanguage="en">
 <context>
+    <name>AddNewTrackPanel</name>
+    <message>
+        <location filename="../qml/AddNewTrackPanel.qml" line="24"/>
+        <source>Number of tracks</source>
+        <translation>Anzahl der Titel</translation>
+    </message>
+    <message>
+        <location filename="../qml/AddNewTrackPanel.qml" line="49"/>
+        <source>Mono</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../qml/AddNewTrackPanel.qml" line="72"/>
+        <source>Stereo</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../qml/AddNewTrackPanel.qml" line="91"/>
+        <source>Label</source>
+        <translation>Etikett</translation>
+    </message>
+    <message>
+        <location filename="../qml/AddNewTrackPanel.qml" line="190"/>
+        <source>Enter a value between %1-%2</source>
+        <translation>Geben Sie einen Wert zwischen ein %1-%2</translation>
+    </message>
+    <message>
+        <location filename="../qml/AddNewTrackPanel.qml" line="237"/>
+        <source>Create</source>
+        <translation>Erstellen</translation>
+    </message>
+</context>
+<context>
     <name>CustomiseToolbar</name>
     <message>
-        <location filename="../qml/CustomiseToolbar.qml" line="24"/>
+        <location filename="../qml/CustomiseToolbar.qml" line="25"/>
         <source>Customise toolbar</source>
         <translation>Symbolleiste konfigurieren</translation>
     </message>
@@ -55,9 +88,8 @@
 <context>
     <name>LabelTrackControlPanel</name>
     <message>
-        <location filename="../uicomponents/qml/LabelTrackControlPanel.qml" line="92"/>
         <source>Add marker</source>
-        <translation>Markierung hinzufügen</translation>
+        <translation type="vanished">Markierung hinzufügen</translation>
     </message>
 </context>
 <context>
@@ -71,45 +103,34 @@
 <context>
     <name>MonoTrackControlPanel</name>
     <message>
-        <location filename="../uicomponents/qml/MonoTrackControlPanel.qml" line="96"/>
-        <source>M</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../uicomponents/qml/MonoTrackControlPanel.qml" line="108"/>
-        <source>S</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../uicomponents/qml/MonoTrackControlPanel.qml" line="136"/>
         <source>Add effects</source>
-        <translation>Effekte hinzufügen</translation>
+        <translation type="vanished">Effekte hinzufügen</translation>
     </message>
 </context>
 <context>
     <name>Sidebar</name>
     <message>
-        <location filename="../qml/Sidebar.qml" line="29"/>
+        <location filename="../qml/Sidebar.qml" line="31"/>
         <source>Label track %1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../qml/Sidebar.qml" line="33"/>
+        <location filename="../qml/Sidebar.qml" line="37"/>
         <source>Stereo track %1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../qml/Sidebar.qml" line="37"/>
+        <location filename="../qml/Sidebar.qml" line="43"/>
         <source>Mono track %1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../qml/Sidebar.qml" line="41"/>
+        <location filename="../qml/Sidebar.qml" line="49"/>
         <source>Video track %1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../qml/Sidebar.qml" line="67"/>
+        <location filename="../qml/Sidebar.qml" line="76"/>
         <source>+ Add new track</source>
         <translation>+Neuen titel hinzufügen</translation>
     </message>
@@ -117,32 +138,8 @@
 <context>
     <name>StereoTrackControlPanel</name>
     <message>
-        <location filename="../uicomponents/qml/StereoTrackControlPanel.qml" line="96"/>
-        <source>M</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../uicomponents/qml/StereoTrackControlPanel.qml" line="108"/>
-        <source>S</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../uicomponents/qml/StereoTrackControlPanel.qml" line="136"/>
         <source>Add effects</source>
-        <translation>Effekte hinzufügen</translation>
-    </message>
-</context>
-<context>
-    <name>TimeControl</name>
-    <message>
-        <location filename="../uicomponents/qml/TimeControl.qml" line="339"/>
-        <source>Hours Minutes Seconds</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../uicomponents/qml/TimeControl.qml" line="352"/>
-        <source>Seconds</source>
-        <translation></translation>
+        <translation type="vanished">Effekte hinzufügen</translation>
     </message>
 </context>
 <context>
@@ -198,90 +195,64 @@
     </message>
 </context>
 <context>
-    <name>VideoTrackControlPanel</name>
-    <message>
-        <location filename="../uicomponents/qml/VideoTrackControlPanel.qml" line="95"/>
-        <source>M</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../uicomponents/qml/VideoTrackControlPanel.qml" line="107"/>
-        <source>S</source>
-        <translation></translation>
-    </message>
-</context>
-<context>
-    <name>VolumeControlTester</name>
-    <message>
-        <location filename="../uicomponents/qml/VolumeControlTester.qml" line="54"/>
-        <source>L</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../uicomponents/qml/VolumeControlTester.qml" line="85"/>
-        <source>R</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../uicomponents/qml/VolumeControlTester.qml" line="117"/>
-        <source>Send</source>
-        <translation></translation>
-    </message>
-</context>
-<context>
     <name>main</name>
     <message>
-        <location filename="../qml/main.qml" line="13"/>
+        <location filename="../qml/main.qml" line="14"/>
         <source>Audacity</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="38"/>
+        <location filename="../qml/main.qml" line="40"/>
         <source>File</source>
         <translation>Datei</translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="40"/>
+        <location filename="../qml/main.qml" line="42"/>
         <source>Exit</source>
         <translation>Ausfahrt</translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="46"/>
+        <location filename="../qml/main.qml" line="48"/>
         <source>Workspace</source>
         <translation>Arbeitsplatz</translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="48"/>
+        <location filename="../qml/main.qml" line="50"/>
         <source>Classic</source>
         <translation>Klassisch</translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="58"/>
+        <location filename="../qml/main.qml" line="60"/>
         <source>Simple recording</source>
         <translation>Einfache Aufnahme</translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="68"/>
+        <location filename="../qml/main.qml" line="70"/>
         <source>Audio editing</source>
         <translation>Audiobearbeitung</translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="78"/>
+        <location filename="../qml/main.qml" line="80"/>
         <source>Spectral editing</source>
         <translation>Spektrale Bearbeitung</translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="89"/>
+        <location filename="../qml/main.qml" line="91"/>
         <source>Language</source>
         <translation>Sprache</translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="114"/>
+        <location filename="../qml/main.qml" line="118"/>
+        <source>Theme</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/main.qml" line="136"/>
         <source>Testers</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="116"/>
+        <location filename="../qml/main.qml" line="138"/>
         <source>VolumeControl</source>
         <translation></translation>
     </message>
