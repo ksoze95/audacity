@@ -7,7 +7,7 @@ import Audacity.UiThemes
 
 Rectangle {
    id: root
-   implicitHeight: 28
+   implicitHeight: 32
    height: implicitHeight
    color: UiTheme.backgroundColor2
    objectName: "TimelineRuler"
@@ -56,6 +56,12 @@ Rectangle {
       width: parent.width
       height: 1
       color: UiTheme.strokeColor
+   }
+
+   AdornedRulerPanel {
+      id: ruler
+      offset: playheadRecessSeparator.x
+      anchors.fill: parent
    }
 
    PlayheadCursor {

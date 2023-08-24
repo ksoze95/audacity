@@ -4,6 +4,8 @@ set(QAUDACITY ${CMAKE_PROJECT_NAME})
 set(QT_QML_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/qml)
 
 set(SOURCES
+   AdornedQtRulerPanel.cpp
+   AdornedQtRulerPanel.h
    AudacityQtConfig.h
    main.cpp
    EditToolbarHandler.cpp
