@@ -32,5 +32,5 @@ protected:
    void wheelEvent(QWheelEvent *event) override;
 
    int m_offset{ 0 };
-   int m_interval{ 18 };
+   int m_interval{ 40 };
 };

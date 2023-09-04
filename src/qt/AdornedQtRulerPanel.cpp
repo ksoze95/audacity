@@ -1,6 +1,8 @@
 #include <cassert>
 #include <QtCore/QDebug>
 #include <QtCore/QList>
+#include <QtCore/QPair>
+#include <QtCore/QString>
 #include <QtGui/QPainter>
 #include <QtGui/QWheelEvent>
 #include "AdornedQtRulerPanel.h"
@@ -16,19 +18,47 @@ void AdornedQtRulerPanel::paint(QPainter *painter)
    if (painter == nullptr)
       return;
 
-   auto w = width();
-   auto h = height();
+   const auto w = width();
+   const auto h = height();
 
-   auto littleTick = h / 8;
-   auto bigTick = h / 4;
+   const auto littleTick = h / 8;
+   const auto bigTick = h / 4;
+   const auto fullTick = h;
 
    QList<QLineF> ticks;
 
    int x = m_offset;
    while (x < w)
    {
-      int tickLength = ticks.count() % 4 == 0 ? bigTick : littleTick;
+      const int count = ticks.count();
+
+      const int tickLength = [&]() {
+         if (count % 10 == 0)
+            return fullTick;
+         else if (count % 2 == 0)
+            return bigTick;
+         else
+            return littleTick;
+      }();
+
       ticks.append(QLineF(x, h - 1, x, h - 1 - tickLength));
+      x += m_interval;
+   }
+
+   qDebug() << "================> ticks.count()" << ticks.count();
+
+   QList<QPair<QLineF, QString>> values;
+   double value{ 0 };
+
+   int index = 1;
+
+   x = m_offset;
+   while (x < w)
+   {
+      auto foobar = x + values.count() % 10 ? 3 : 0;
+      qDebug() << "=========================>" << index << foobar << QString::number(value, 'f', 2);
+      value += 0.01;
+      index++;
       x += m_interval;
    }
 

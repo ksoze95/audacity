@@ -202,7 +202,6 @@ ApplicationWindow {
       id: timelineRuler
       x: sidebar.width + 1
       width: root.width - sidebar.width - 1
-      height: 28
       playheadCursorHeight: height / 2 + trackCanvas.height
    }
 
