@@ -2,9 +2,13 @@
 #include <QtCore/QDebug>
 #include <QtCore/QList>
 #include <QtCore/QPair>
+#include <QtCore/QPoint>
 #include <QtCore/QString>
+#include <QtGui/QColor>
 #include <QtGui/QPainter>
+#include <QtGui/QStaticText>
 #include <QtGui/QWheelEvent>
+#include <QtQml/QQmlContext>
 #include "AdornedQtRulerPanel.h"
 
 AdornedQtRulerPanel::AdornedQtRulerPanel(QQuickItem *parent)
@@ -26,8 +30,11 @@ void AdornedQtRulerPanel::paint(QPainter *painter)
    const auto fullTick = h;
 
    QList<QLineF> ticks;
+   QList<QPair<int, QStaticText>> values;
 
+   double value{ 0.0 };
    int x = m_offset;
+
    while (x < w)
    {
       const int count = ticks.count();
@@ -42,34 +49,37 @@ void AdornedQtRulerPanel::paint(QPainter *painter)
       }();
 
       ticks.append(QLineF(x, h - 1, x, h - 1 - tickLength));
+      values.append(qMakePair(x + (values.count() % 10 == 0 ? 3 : 0), QStaticText(QString::number(value, 'f', 2))));
+
       x += m_interval;
+      value += m_increment;
    }
 
-   qDebug() << "================> ticks.count()" << ticks.count();
-
-   QList<QPair<QLineF, QString>> values;
-   double value{ 0 };
-
-   int index = 1;
-
-   x = m_offset;
-   while (x < w)
-   {
-      auto foobar = x + values.count() % 10 ? 3 : 0;
-      qDebug() << "=========================>" << index << foobar << QString::number(value, 'f', 2);
-      value += 0.01;
-      index++;
-      x += m_interval;
-   }
+   auto object = qmlContext(this)->objectForName("root");
+   if (object == nullptr)
+      return;
 
    painter->save();
 
-   QPen pen = painter->pen();
-   pen.setColor("green");
-   pen.setWidth(1);
-   painter->setPen(pen);
+   auto font = object->property("textFont").value<QFont>();
+   font.setPixelSize(12);
 
-   painter->drawLines(ticks);
+   for (const auto& value : values)
+   {
+      painter->drawStaticText(value.first, 2, value.second);
+   }
+
+   auto tickColor = object->property("separatorColor").value<QColor>();
+   if (tickColor.isValid())
+   {
+      QPen pen = painter->pen();
+      pen.setColor(tickColor);
+      pen.setWidth(1);
+
+      painter->setPen(pen);
+      painter->drawLines(ticks);
+   }
+
    painter->restore();
 }
 
