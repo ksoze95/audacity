@@ -71,23 +71,28 @@ void AdornedQtRulerPanel::paint(QPainter *painter)
 
    painter->save();
 
+   QPen pen = painter->pen();
+   pen.setWidth(1);
+
    auto font = object->property("textFont").value<QFont>();
    font.setPixelSize(12);
+
+   auto textColor = object->property("textColor").value<QColor>();
 
    for (qsizetype i = 0; i < values.count(); i++)
    {
       font.setBold(i % 5 == 0);
+      pen.setColor(textColor);
 
       painter->setFont(font);
+      painter->setPen(pen);
       painter->drawText(QRectF(values[i].first, 0, w, h / 2), Qt::AlignLeft | Qt::AlignVCenter, values[i].second);
    }
 
    auto tickColor = object->property("separatorColor").value<QColor>();
    if (tickColor.isValid())
    {
-      QPen pen = painter->pen();
       pen.setColor(tickColor);
-      pen.setWidth(1);
 
       painter->setPen(pen);
       painter->drawLines(ticks);
