@@ -1,6 +1,5 @@
 #include <cassert>
 #include <QtCore/QDebug>
-#include <QtCore/QList>
 #include <QtCore/QPair>
 #include <QtCore/QPoint>
 #include <QtCore/QString>
@@ -34,7 +33,7 @@ void AdornedQtRulerPanel::paint(QPainter *painter)
    const auto bigTick = h / 4;
    const auto fullTick = h;
 
-   QList<QLineF> ticks;
+   QVector<QLineF> ticks;
    QVector<QPair<int, QString>> values;
 
    int value = 0;
@@ -64,7 +63,7 @@ void AdornedQtRulerPanel::paint(QPainter *painter)
          value++;
       }
 
-      ticks.append(QLineF(x, h - 1, x, h - 1 - tickLength));
+      ticks.append(QLineF(x, h - 2, x, h - 1 - tickLength));
 
       x += m_interval;
    }
@@ -92,10 +91,14 @@ void AdornedQtRulerPanel::paint(QPainter *painter)
    auto tickColor = object->property("separatorColor").value<QColor>();
    if (tickColor.isValid())
    {
-      pen.setColor(tickColor);
+      for (auto i = 0; i < ticks.count(); ++i)
+      {
+         tickColor.setAlphaF(i % 10 == 0 ? 0.6 : 1.0);
+         pen.setColor(tickColor);
 
-      painter->setPen(pen);
-      painter->drawLines(ticks);
+         painter->setPen(pen);
+         painter->drawLine(ticks[i]);
+      }
    }
 
    painter->restore();

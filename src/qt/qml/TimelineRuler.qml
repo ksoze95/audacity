@@ -14,7 +14,7 @@ Rectangle {
 
    property alias playheadCursorHeight: playheadCursor.height
    property bool snapped: false
-   property color separatorColor: UiTheme.strokeColor
+   property color separatorColor: UiTheme.fontColor1
    property color textColor: UiTheme.fontColor1
    property font textFont: appConfig.bodyFont
 
@@ -43,11 +43,12 @@ Rectangle {
       width: 1
       height: parent.height
       color: separatorColor
+      visible: false
    }
 
    Rectangle {
       height: 1
-      color: separatorColor
+      color: UiTheme.strokeColor
       y: parent.height / 2
       anchors.left: playheadRecessSeparator.right
       anchors.right: snappingButton.left
@@ -58,7 +59,7 @@ Rectangle {
       y: parent.height - 1
       width: parent.width
       height: 1
-      color: separatorColor
+      color: UiTheme.strokeColor
    }
 
    AdornedRulerPanel {
