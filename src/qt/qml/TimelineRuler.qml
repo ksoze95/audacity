@@ -48,7 +48,7 @@ Rectangle {
    Rectangle {
       height: 1
       color: separatorColor
-      anchors.verticalCenter: parent.verticalCenter
+      y: parent.height / 2
       anchors.left: playheadRecessSeparator.right
       anchors.right: snappingButton.left
    }

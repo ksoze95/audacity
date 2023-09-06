@@ -4,6 +4,7 @@
 #include <QtCore/QPair>
 #include <QtCore/QPoint>
 #include <QtCore/QString>
+#include <QtCore/QVector>
 #include <QtGui/QColor>
 #include <QtGui/QPainter>
 #include <QtGui/QStaticText>
@@ -22,6 +23,10 @@ void AdornedQtRulerPanel::paint(QPainter *painter)
    if (painter == nullptr)
       return;
 
+   auto object = qmlContext(this)->objectForName("root");
+   if (object == nullptr)
+      return;
+
    const auto w = width();
    const auto h = height();
 
@@ -30,7 +35,7 @@ void AdornedQtRulerPanel::paint(QPainter *painter)
    const auto fullTick = h;
 
    QList<QLineF> ticks;
-   QList<QPair<int, QStaticText>> values;
+   QVector<QPair<int, QString>> values;
 
    double value{ 0.0 };
    int x = m_offset;
@@ -48,25 +53,28 @@ void AdornedQtRulerPanel::paint(QPainter *painter)
             return littleTick;
       }();
 
+      if (ticks.count() % 2 == 0)
+      {
+         values.append(qMakePair(x + (values.count() % 5 == 0 ? 3 : 0), QString::number(value, 'f', 2)));
+         value += m_increment;
+      }
+
       ticks.append(QLineF(x, h - 1, x, h - 1 - tickLength));
-      values.append(qMakePair(x + (values.count() % 10 == 0 ? 3 : 0), QStaticText(QString::number(value, 'f', 2))));
 
       x += m_interval;
-      value += m_increment;
    }
-
-   auto object = qmlContext(this)->objectForName("root");
-   if (object == nullptr)
-      return;
 
    painter->save();
 
    auto font = object->property("textFont").value<QFont>();
    font.setPixelSize(12);
 
-   for (const auto& value : values)
+   for (qsizetype i = 0; i < values.count(); i++)
    {
-      painter->drawStaticText(value.first, 2, value.second);
+      font.setBold(i % 5 == 0);
+
+      painter->setFont(font);
+      painter->drawText(QRectF(values[i].first, 0, w, h / 2), Qt::AlignLeft | Qt::AlignVCenter, values[i].second);
    }
 
    auto tickColor = object->property("separatorColor").value<QColor>();
