@@ -37,7 +37,7 @@ void AdornedQtRulerPanel::paint(QPainter *painter)
    QList<QLineF> ticks;
    QVector<QPair<int, QString>> values;
 
-   double value{ 0.0 };
+   int value = 0;
    int x = m_offset;
 
    while (x < w)
@@ -55,8 +55,13 @@ void AdornedQtRulerPanel::paint(QPainter *painter)
 
       if (ticks.count() % 2 == 0)
       {
-         values.append(qMakePair(x + (values.count() % 5 == 0 ? 3 : 0), QString::number(value, 'f', 2)));
-         value += m_increment;
+         values.append(
+            qMakePair(
+               x + (values.count() % 5 == 0 ? 3 : 0),
+               QString("%1:%2").arg(value / 60).arg(value % 60, 2, 10, QChar('0'))
+            )
+         );
+         value++;
       }
 
       ticks.append(QLineF(x, h - 1, x, h - 1 - tickLength));

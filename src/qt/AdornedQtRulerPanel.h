@@ -33,5 +33,4 @@ protected:
 
    int m_offset{ 0 };
    int m_interval{ 40 };
-   double m_increment{ 0.01 };
 };
