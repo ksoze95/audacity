@@ -127,6 +127,7 @@ ApplicationWindow {
                onTriggered: {
                   UiTheme.changeTheme(text)
                   toolsToolbar.refreshSetup()
+                  timelineRuler.updateTheme()
                }
             }
          }

@@ -27,6 +27,7 @@ public:
 
    Q_INVOKABLE void ZoomIn();
    Q_INVOKABLE void ZoomOut();
+   Q_INVOKABLE void UpdateTheme();
 
 protected:
    void wheelEvent(QWheelEvent *event) override;

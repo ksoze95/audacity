@@ -134,6 +134,11 @@ void AdornedQtRulerPanel::ZoomOut()
    update();
 }
 
+void AdornedQtRulerPanel::UpdateTheme()
+{
+   update();
+}
+
 void AdornedQtRulerPanel::wheelEvent(QWheelEvent *event)
 {
    assert(event != nullptr);

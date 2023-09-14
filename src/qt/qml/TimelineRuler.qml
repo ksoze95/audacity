@@ -37,6 +37,10 @@ Rectangle {
       playheadCursor.visible = false
    }
 
+   function updateTheme() {
+      ruler.UpdateTheme()
+   }
+
    Rectangle {
       id: playheadRecessSeparator
       x: 12
